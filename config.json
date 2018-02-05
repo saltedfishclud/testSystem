@@ -1,0 +1,17 @@
+{
+  "post":3000,
+  "mongoose":{
+    "admin":"mongodb://root:123@localhost/questionBank?authSource=admin"
+  },
+  "DBadmin":{
+    "root":{
+      "user":"root",
+      "pwd":"123"
+    }
+  },
+  "subTable":{
+    "javascript":"JS_question",
+    "html":"",
+    "css":""
+  }
+}

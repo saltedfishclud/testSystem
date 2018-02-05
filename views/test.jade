@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title 潭州教育前端学院考试管理系统
+        link(rel='shortcut icon' href='http://moonbuy.cn/mall/static/images/favicon.ico' type='image/x-icon')
+        style.
+
+    body
+    script(src='/javascripts/jquery.js')
+    script.
+        var data = {
+            question: "以下代码的输出是?",
+            q_code: "var name=\"狗蛋\";function Fn(){(function(){this.name=\"大锤\"}).call(window)}Fn.prototype.creat=function(){this.name=\"小明\"};console.log(new new Fn().creat().name);",
+            options: ["报错","狗蛋","大锤","小明"],
+            rightAnswer: "小明",
+            explain:"最终其实是new creat函数，new (new Fn().creat)()，再然后取name，就是\"小明\"了"
+        };
+        document.onclick = function () {
+            $.ajax({
+                type: "POST",
+                url: "/v1_0/javascript/mcq",
+                data: {data:JSON.stringify(data)},
+                success: function (data, status) {
+                    console.log(data);
+                }
+            });
+        }
