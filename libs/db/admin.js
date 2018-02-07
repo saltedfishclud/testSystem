@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config');
 
-mongoose.connect(config.get('mongoose:questionBank'));
+mongoose.connect(config.get('mongoose:admin_group'));
 
 const db = mongoose.connection;
 
@@ -14,4 +14,3 @@ db.once('open',()=>{
 });
 
 module.exports = mongoose;
-

@@ -1,4 +1,4 @@
-const mongoose = require('../db/questionBank');
+var mongoose = require('../db/questionBank');
 var Schema = mongoose.Schema;
 
 

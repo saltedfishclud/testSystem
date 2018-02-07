@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title 管理员登陆界面
+        script(src="/javascripts/jquery.js")
+    body
+        form(action='/admin/dologin' method='post')
+            label 管理员密码
+            input(type='text' id='admin' name='admin')
+            br
+            label 密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码
+            input(type='password' id='pwd' name='pwd')
+            br
+            input(type='submit' value='提交')
+
+
+    script.

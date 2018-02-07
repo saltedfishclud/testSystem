@@ -23,6 +23,22 @@ router.get('/mcq',function (req,res) {
     });
 });
 
+//查看具体某个题目
+router.get('/mcq/:id',function (req,res) {
+
+    jsModel.findById(req.params.id,function (err,doc) {
+        if(err){
+            res.statusCode = 500;
+            return res.send({error:'Server error',status:500,info:err.message});
+        }
+        if(!doc){
+            return res.send({error:'Not found'});
+        }
+        return res.send(doc);
+    });
+
+});
+
 //JS新增选择题
 router.post('/mcq',function (req,res) {
     //res.send({status:200,info:"req succeessful"});
@@ -32,19 +48,34 @@ router.post('/mcq',function (req,res) {
         if(!err){
             res.send({status:200,info:"req succeessful"});
         }else {
-            if(err.name == 'ValidationError'){
-                res.statusCode = 400;
-                res.send({error:'Validation error',status:400});
-            }else{
-                res.statusCode = 500;
-                console.log({error:'Server error',status:500,info:err.message});
-                res.send({error:'Server error',status:500,info:err.message});
-            }
+            res.statusCode = 500;
+            res.send({error:'Server error',status:500,info:err.message});
         }
     });
 });
 
 //删除某条
+router.delete('/mcq/:id',function (req,res) {
+    var data_id = req.params.id;
+    jsModel.findById(data_id,function (err,doc) {
+        if(err){
+            res.statusCode = 500;
+            return res.send({error:'Server error',status:500,info:err.message});
+        }
+        if (!doc){
+            return res.send({error:'Not found'});
+        }
+        return doc.remove(function (err) {
+            if(!err){
+                res.send({status:'DELETE OK'})
+            }else{
+                res.statusCode = 500;
+                return res.send({error:'Server error',code:500})
+            }
+        });
+    });
+});
+
 
 
 

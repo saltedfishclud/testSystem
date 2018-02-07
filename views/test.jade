@@ -17,9 +17,8 @@ html
         };
         document.onclick = function () {
             $.ajax({
-                type: "POST",
-                url: "/v1_0/javascript/mcq",
-                data: {data:JSON.stringify(data)},
+                type: "delete",
+                url: "/v1_0/javascript/mcq/5a78139b7b393e0879e5130b",
                 success: function (data, status) {
                     console.log(data);
                 }
