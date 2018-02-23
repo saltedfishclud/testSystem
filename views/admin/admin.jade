@@ -3,7 +3,35 @@ html
     head
         title 潭州教育前端学院考试管理系统
         link(rel='shortcut icon' href='http://moonbuy.cn/mall/static/images/favicon.ico' type='image/x-icon')
-        style.
-
+        link(rel='stylesheet' type='text/css' href='/stylesheets/admin.css')
+        script(src="/javascripts/jquery.js")
     body
-        h1 欢迎管理员 #{adminUser}
+        aside
+            div.logo
+                img(src='/images/logo2.png')
+            div.list
+                ul
+                    li.active 用户管理
+                    li 考试管理
+                    li 成绩查询
+        div.main
+            header
+                //div.tool 工具
+                //div.language 中文
+                //div.user 头像
+            content
+                div.title
+                    h2 用户管理
+                    button 查询
+                div.search-answer
+
+    script.
+        document.onclick = function () {
+            $.ajax({
+                type: "get",
+                url: "/v1_0/javascript/mcq",
+                success: function (data, status) {
+                    console.log(data);
+                }
+            });
+        }

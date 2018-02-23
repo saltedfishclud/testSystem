@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var config = require('../libs/config');
 var jsModel = require('../libs/model/q_JS');
+var passport = require('passport');
 
 /* GET subject listing. */
 
@@ -12,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 
 //查看JS选择题
-router.get('/mcq',function (req,res) {
+router.get('/mcq', passport.authenticate('bearer', { session: false }),function (req,res) {
 
     jsModel.find(function (err,doc) {
         if(!err){

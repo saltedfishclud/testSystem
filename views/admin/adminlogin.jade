@@ -3,16 +3,31 @@ html
     head
         meta(charset="utf-8")
         title 管理员登陆界面
+        link(rel='stylesheet' type='text/css' href='/stylesheets/adminlogin.css')
+        link(rel='shortcut icon' href='http://moonbuy.cn/mall/static/images/favicon.ico' type='image/x-icon')
         script(src="/javascripts/jquery.js")
     body
-        form(action='/admin/dologin' method='post')
-            label 管理员密码
-            input(type='text' id='admin' name='admin')
-            br
-            label 密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码
-            input(type='password' id='pwd' name='pwd')
-            br
-            input(type='submit' value='提交')
-
-
+        header
+            div.header
+                img(src='/images/logo.png' alt='logo' width='182' height=47)
+                div.date 2018/2/9
+        main
+            div.main
+                img(src='/images/img.png')
+                form#form(action='/admin/dologin' method='POST')
+                    p
+                        img(src='/images/icon.png')
+                    p.tips 管理员
+                    p
+                        input(type='text' name="admin" placeholder='请输入用户名')
+                    p.tips 密码
+                    p
+                        input(type='password' name="pwd" placeholder='请输入密码')
+                    div.checkbox
+                        div.fogetpw
+                            a(href='javascript:;') 管理建议
+                    p
+                        input.submit(type='submit' value='登陆')
+        footer
+            div.footer &copy;2018潭州教育综合IT考试平台版权
     script.

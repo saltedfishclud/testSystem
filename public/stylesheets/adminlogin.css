@@ -1,0 +1,119 @@
+*{
+	margin: 0;
+	text-decoration: none;
+}
+a{
+	color: #fff;
+}
+body{
+	background: #f7f8fa;
+	overflow-x: hidden;
+}
+/*init end*/
+/*header*/
+header{
+	display: flex;
+	height: 100px;
+	/*background: #ccc;*/
+}
+header .header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+	min-width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+header .header img{
+	display: block;
+}
+header .header .date{
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	color: #888;
+}
+/*header end*/
+
+main{
+	height: 650px;
+	width: 100%;
+	background: #36aacf;
+}
+main .main{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	width: 75%;
+	min-width: 1200px;
+	height: 100%;
+	/*border: 1px black solid;*/
+}
+main .main #form{
+	width: 350px;
+	height: 425px;
+	padding: 40px 130px;
+	background-color: #1f8cad;
+	border-radius: 10px;
+}
+main .main #form p{
+	text-align: center;
+}
+#form input{
+	/*margin-top: 50px;*/
+	width: 340px;
+	height: 40px;
+	border-radius: 5px;
+	outline: none;
+	border-width: 0px;
+	text-indent: 5px;
+	font-size: 14px;
+}
+main .main #form .tips{
+	margin: 20px 0 10px 5px;
+	text-align: left;
+	font-size: 18px;
+	color: white;
+}
+#form .checkbox{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+}
+#form .checked{
+	position: relative;
+	width: 16px;
+	height: 16px;
+	border: 1px #fff solid;
+}
+#form .checked:after{
+	position: absolute;
+	left: 30px;
+	top: -4px;
+	width: 120px;
+	font-size: 16px;
+	content: '记住密码';
+	color: #fff;
+}
+#form .submit{
+	background-color: #26c5ff;
+	font-size: 16px;
+	letter-spacing: 8px;
+	color: #fff;
+	cursor: pointer;
+}
+/*main区域end*/
+/*footer*/
+footer{
+	width: 100%;
+	height: 200px;
+}
+footer .footer{
+	line-height: 200px;
+	text-align: center;
+	color: #6a868a;
+}

@@ -1,0 +1,84 @@
+*{
+	margin: 0;padding: 0;list-style: none;font-weight: normal;
+}
+html,body{height: 100%;}
+body{
+	display: flex;
+	background-color: #f0f1f3;
+	overflow-y: hidden;
+}
+/*init end*/
+/*aside*/
+aside{
+	width: 220px;
+	min-width: 220px;
+	height: 100%;
+	background-color: #202c3a;
+}
+aside .logo{
+	height: 90px;
+	width: 100%;
+	text-align: center;
+	line-height: 90px;
+}
+aside .logo img{
+	vertical-align: middle;
+}
+aside .list li{
+	padding-left: 20px;
+	height: 55px;
+	line-height: 55px;
+	color: white;
+}
+aside .list li i{
+	margin-right: 10px;
+}
+aside .list .active{
+	background-color: #23b7df;
+}
+/*aside end*/
+.main{
+	width: 100%;
+	height: 100%;
+	background-color: #f0f1f3;
+}
+.main header{
+	display: flex;
+	width: 100%;
+	height: 30px;
+	padding: 30px 0;
+	background-color: #dfe2e5;
+}
+.main content{
+	display: block;
+	width: 90%;
+	min-width: 1200px;
+	height: 80%;
+	margin: 20px;
+	border:	1px #efe2e9 solid;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.main content .title{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	border-bottom: 1px #efe2e9 solid;
+	padding: 0 30px;
+}
+.main content .title h2{
+	line-height: 70px;
+	font-size: 22px;
+	color: #111;
+}
+.main content .title button{
+	width: 70px;
+	height: 30px;
+	background-color: #23b7df;
+	outline-width: 0;
+	border-width: 0;
+	border-radius: 4px;
+	color: #fff;
+	letter-spacing: 3px;
+}

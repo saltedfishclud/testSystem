@@ -2,7 +2,8 @@
   "post":3000,
   "mongoose":{
     "questionBank":"mongodb://root:123@localhost/questionBank?authSource=admin",
-    "admin_group":"mongodb://root:123@localhost/admin_group?authSource=admin"
+    "admin_group":"mongodb://root:123@localhost/admin_group?authSource=admin",
+    "auth_group":"mongodb://root:123@localhost/auth_group?authSource=admin"
   },
   "DBadmin":{
     "root":{
@@ -14,5 +15,15 @@
     "javascript":"JS_question",
     "html":"",
     "css":""
+  },
+  "default": {
+    "api": {
+      "version" : "v1"
+    },
+    "client": {
+      "name": "client",
+      "clientId": "cl",
+      "clientSecret": "123"
+    }
   }
 }

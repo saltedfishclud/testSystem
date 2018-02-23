@@ -18,6 +18,11 @@
     "mongoose": "^5.0.3",
     "morgan": "~1.9.0",
     "nconf": "^0.10.0",
+    "oauth2orize": "^1.11.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-oauth2-client-password": "^0.1.2",
     "serve-favicon": "~2.4.5"
   },
   "description": "This is testSystem",
