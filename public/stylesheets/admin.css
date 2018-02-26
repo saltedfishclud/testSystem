@@ -29,6 +29,7 @@ aside .list li{
 	height: 55px;
 	line-height: 55px;
 	color: white;
+	cursor: pointer;
 }
 aside .list li i{
 	margin-right: 10px;
@@ -81,4 +82,11 @@ aside .list .active{
 	border-radius: 4px;
 	color: #fff;
 	letter-spacing: 3px;
+}
+td{
+	line-height: 40px;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }

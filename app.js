@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(session({
     secret: parseInt(Math.random()*10000).toString(),
     name: 'name',
-    cookie: {maxAge: 600000},
+    cookie: {maxAge: 6000000},
     resave: false,
     saveUninitialized: true,
 }));
@@ -63,11 +63,12 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  console.log(err.message);
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.send('404');
+  res.send('500');
 });
 
 module.exports = app;

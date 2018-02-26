@@ -4,6 +4,7 @@ html
         title 潭州教育前端学院考试管理系统
         link(rel='shortcut icon' href='http://moonbuy.cn/mall/static/images/favicon.ico' type='image/x-icon')
         link(rel='stylesheet' type='text/css' href='/stylesheets/admin.css')
+        link(rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css")
         script(src="/javascripts/jquery.js")
     body
         aside
@@ -15,23 +16,87 @@ html
                     li 考试管理
                     li 成绩查询
         div.main
-            header
-                //div.tool 工具
-                //div.language 中文
-                //div.user 头像
-            content
+            content.user
                 div.title
                     h2 用户管理
                     button 查询
                 div.search-answer
-
+            content.test(style='display:none')
+                div.title
+                    h2 考试题库
+                    button 查询
+                div.search-answer
+                    table#textTable(style="width:100%" cellspacing="0")
+                        thead
+                            tr
+                                th 序号
+                                th 问题
+                                th 选择项
+                                th 展示代码
+                                th 正确答案
+                                th 解释
+                                th 修改时间
+                                th 操作
+            content.performance(style='display:none')
+                div.title
+                    h2 成绩查询
+                    button 查询
+                div.search-answer
+    script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js")
     script.
-        document.onclick = function () {
-            $.ajax({
-                type: "get",
-                url: "/v1_0/javascript/mcq",
-                success: function (data, status) {
-                    console.log(data);
+        $(".list ul li").click(function () {
+            var index = $(this).index();
+            $(this).addClass('active').siblings().removeClass();
+            $(".main content").eq(index).show().siblings().hide();
+        });
+
+        $('#textTable').DataTable({
+            "language": {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "每页 _MENU_ 项",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+                "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页",
+                    "sJump": "跳转"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
                 }
-            });
-        }
+            },
+            "ajax": {
+                "url":"/v1_0/javascript/mcq",
+                "dataSrc": ""
+            },
+            "autoWidth": false,
+            "columnDefs": [
+                {"width": "5%", "targets": 0},
+                {"width": "25%", "targets": 1},
+                {"width": "15%", "targets": 2},
+                {"width": "10%", "targets": 3},
+                {"width": "10%", "targets": 4},
+                {"width": "15%", "targets": 5},
+                {"width": "10%", "targets": 6},
+            ],
+            "columns": [
+                {"data": "序号"},
+                {"data": "问题"},
+                {"data": "选择项"},
+                {"data": "展示代码"},
+                {"data": "正确答案"},
+                {"data": "解释"},
+                {"data": "修改时间"}
+            ],
+        });

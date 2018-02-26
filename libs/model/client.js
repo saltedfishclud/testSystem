@@ -1,4 +1,5 @@
-var mongoose = require('../db/auth_groud');
+var db = require('../db/auth_groud');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Client = new Schema({
@@ -17,4 +18,4 @@ var Client = new Schema({
         required: true
     }
 });
-module.exports = mongoose.model('Client', Client);
+module.exports = db.model('Client', Client);

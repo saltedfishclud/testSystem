@@ -24,6 +24,9 @@
       "name": "client",
       "clientId": "cl",
       "clientSecret": "123"
+    },
+    "security":{
+      "tokenLife":3600
     }
   }
 }

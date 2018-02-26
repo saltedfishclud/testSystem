@@ -1,13 +1,16 @@
+var config = require('../config');
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
 var ClientPasswordStrategy = require('passport-oauth2-client-password').Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var Admin = require('../model/admin_group');
 var Client = require('../model/client');
+var AccessToken = require('../model/accessToken');
 
 passport.use(new BasicStrategy(
     function(username, password, done) {
-        Admin.findOne({ clientId:username }, function(err, client) {
+        Admin.findOne({ admin:username }, function(err, user) {
+            console.log(user);
             if (err) {
                 return done(err);
             }

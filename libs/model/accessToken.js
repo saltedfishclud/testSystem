@@ -1,9 +1,10 @@
-var mongoose = require('../db/auth_groud');
+var db = require('../db/auth_groud');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // AccessToken
 var AccessToken = new Schema({
-    userId: {
+    adminId: {
         type: String,
         required: true
     },
@@ -25,4 +26,4 @@ var AccessToken = new Schema({
     }
 });
 
-module.exports  = mongoose.model('AccessToken', AccessToken);
+module.exports  = db.model('AccessToken', AccessToken);

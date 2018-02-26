@@ -13,9 +13,22 @@ router.get('/', function(req, res, next) {
 
 
 //查看JS选择题
-router.get('/mcq', passport.authenticate('bearer', { session: false }),function (req,res) {
-
+router.get('/mcq',function (req,res) {
     jsModel.find(function (err,doc) {
+        // var data = [];
+        // doc.forEach(function (el,index) {
+        //     var json = {
+        //         "序号":index+1,
+        //         "问题":el.question,
+        //         "选择项":el.options,
+        //         "展示代码":el.q_code || "",
+        //         "正确答案":el.rightAnswer,
+        //         "解释":el.explain,
+        //         "修改时间":el.modified
+        //     }
+        //     data.push(json);
+        // });
+
         if(!err){
             res.send(doc);
         }else{

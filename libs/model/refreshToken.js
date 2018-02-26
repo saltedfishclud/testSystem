@@ -1,7 +1,7 @@
-var mongoose = require('../db/auth_groud'),
-    Schema = mongoose.Schema,
-
-    RefreshToken = new Schema({
+var db = require('../db/auth_groud');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var RefreshToken = new Schema({
         userId: {
             type: String,
             required: true
@@ -21,4 +21,4 @@ var mongoose = require('../db/auth_groud'),
         }
     });
 
-module.exports = mongoose.model('RefreshToken', RefreshToken);
+module.exports = db.model('RefreshToken', RefreshToken);

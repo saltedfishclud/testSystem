@@ -1,4 +1,5 @@
-var mongoose = require('../db/questionBank');
+var db = require('../db/questionBank');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
@@ -12,4 +13,4 @@ var JS = new Schema({
     adminUser:{type:String,require:true},
 });
 
-module.exports = mongoose.model('JS_question', JS);
+module.exports = db.model('JS_question', JS);

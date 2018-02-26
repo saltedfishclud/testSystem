@@ -6,21 +6,30 @@ html
         style.
 
     body
+        a(href='/admin/login') 管理员登陆
     script(src='/javascripts/jquery.js')
     script.
-        var data = {
-            question: "以下代码的输出是?",
-            q_code: "var name=\"狗蛋\";function Fn(){(function(){this.name=\"大锤\"}).call(window)}Fn.prototype.creat=function(){this.name=\"小明\"};console.log(new new Fn().creat().name);",
-            options: ["报错","狗蛋","大锤","小明"],
-            rightAnswer: "小明",
-            explain:"最终其实是new creat函数，new (new Fn().creat)()，再然后取name，就是\"小明\"了"
-        };
         document.onclick = function () {
-            $.ajax({
-                type: "delete",
-                url: "/v1_0/javascript/mcq/5a78139b7b393e0879e5130b",
-                success: function (data, status) {
-                    console.log(data);
-                }
+            $.post('/api/oauth/token',{
+                grant_type:"password",
+                client_id:"cl",
+                client_secret:123,
+                username:"xiaolong",
+                password:"123456"
+            },function (doc) {
+                var value = "Authorization%20"+doc.access_token;
+                console.log(value);
+                $.ajax({
+                    type: "get",//数据发送的方式（post 或者 get）
+                    url: "/v1_0/javascript/mcq",//要发送的后台地址
+                    data: {Authorization: value},//要发送的数据（参数）格式为{'val1':"1","val2":"2"}
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (data) {//ajax请求成功后触发的方法
+                        console.log(data)
+                    },
+                    error: function (msg) {//ajax请求失败后触发的方法
+
+                    }
+                });
             });
         }

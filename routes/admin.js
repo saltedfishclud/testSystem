@@ -3,7 +3,7 @@ var router = express.Router();
 var adminModel = require('../libs/model/admin_group');
 
 /* GET admin listing. */
-router.get('/', function(req, res) {
+router.get('/view', function(req, res ) {
     var adminUser = req.session.admin;
     if(req.session.isLogin){
         res.render('admin/admin',{adminUser});
@@ -14,12 +14,14 @@ router.get('/', function(req, res) {
 
 router.get('/login',function (req,res) {
     if(req.session.isLogin){
-        res.redirect('/admin');
+        res.redirect('/admin/view');
     }else{
         res.render('admin/adminlogin');
     }
+});
 
-})
+
+
 //执行登陆
 router.post('/dologin',function (req,res) {
     var admin = req.body.admin,
@@ -37,11 +39,14 @@ router.post('/dologin',function (req,res) {
             if (isMatch){
                 req.session.isLogin = isMatch;
                 req.session.admin = doc.admin;
+                res.redirect('/admin/view');
+            }else{
+                res.redirect('/admin/login')
             }
-            res.redirect('/admin');
         });
     });
 });
+
 
 
 module.exports = router;
