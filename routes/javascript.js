@@ -56,7 +56,13 @@ router.get('/mcq/:id',function (req,res) {
 //JS新增选择题
 router.post('/mcq',function (req,res) {
     //res.send({status:200,info:"req succeessful"});
-    var jsInsert = new jsModel(JSON.parse(req.body.data));
+    req.body.options = req.body.options.split(',');
+
+    if(!req.body.q_code){
+        req.body.q_code = null;
+    }
+
+    var jsInsert = new jsModel(req.body);
 
     jsInsert.save(function (err,doc) {
         if(!err){
@@ -81,7 +87,7 @@ router.delete('/mcq/:id',function (req,res) {
         }
         return doc.remove(function (err) {
             if(!err){
-                res.send({status:'DELETE OK'})
+                res.send({status:true});
             }else{
                 res.statusCode = 500;
                 return res.send({error:'Server error',code:500})

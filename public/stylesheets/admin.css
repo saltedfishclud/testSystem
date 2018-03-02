@@ -82,11 +82,68 @@ aside .list .active{
 	border-radius: 4px;
 	color: #fff;
 	letter-spacing: 3px;
+	cursor: pointer;
+}
+.search-answer{
+	padding-top: 30px;
 }
 td{
-	line-height: 40px;
 	font-size: 14px;
-	overflow: hidden;
-	text-overflow:ellipsis;
-	white-space: nowrap;
+}
+.th{
+	font-size: 14px!important;
+	color: #6a868a!important;
+}
+.selectd{
+	background-color: #acbad4;
+}
+.text-center{
+	text-align: center;
+}
+.q-btn{
+	width: 100px;
+	height:40px;
+	margin: 0 0 30px 30px;
+}
+#push_data{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.6);
+}
+.q-data-wrap{
+	width: 750px;
+	padding: 30px;
+	background: #fff;
+	margin: 50px auto;
+	border-radius: 10px;
+}
+.q-data-wrap label{
+	font-size: 16px;
+	color: #333;
+	line-height: 20px;
+}
+.q-data-wrap div{
+	margin-bottom: 10px;
+}
+input[name="question"],input[name="options"],input[name="rightAnswer"]{
+	width: 70%;
+	line-height: 30px;
+}
+textarea[name="q_code"],textarea[name="explain"]{
+	resize: none;
+	width: 80%;
+	height:240px;
+}
+input.q-submit{
+	display: block;
+	width: 100px;
+	height: 30px;
+	margin: auto;
+}
+#sel_subj{
+	height: 30px;
+	line-height: 30px;
+	margin-right: 20px;
 }

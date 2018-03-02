@@ -24,79 +24,74 @@ html
             content.test(style='display:none')
                 div.title
                     h2 考试题库
-                    button 查询
+                    div.sel
+                        select#sel_subj
+                            option(value='basics') 前端基础
+                            option(value='javascript') javascript
+                            option(value='html5') HTML5
+                        button.q-query 查询
                 div.search-answer
-                    table#textTable(style="width:100%" cellspacing="0")
+                    div#btn
+                        input.q-push.q-btn(type="button" value="添加新试题")
+                        input.q-del.q-btn(type="button" value="删除所选试题")
+                    table#textTable.display(style="width:100%" cellspacing="1")
                         thead
                             tr
-                                th 序号
+                                th ID
                                 th 问题
                                 th 选择项
                                 th 展示代码
                                 th 正确答案
                                 th 解释
                                 th 修改时间
-                                th 操作
+                                th
             content.performance(style='display:none')
                 div.title
                     h2 成绩查询
                     button 查询
                 div.search-answer
+        div#push_data
+            div.q-data-wrap
+                form(action="/v1_0/javascript/mcq" method="POST")
+                    div
+                        p
+                            label 题目
+                        input(type="text" name="question")
+                    div
+                        p
+                            label 试题代码
+                        textarea(name="q_code")
+                    div
+                        p
+                            label 选项(数组格式)
+                        input(type="text" name="options")
+                    div
+                        p
+                            label 正确答案
+                        input(type="text" name="rightAnswer")
+                    div
+                        p
+                            label 解释说明
+                        textarea(name="explain")
+                    input(type="submit" class="q-submit" value="提交试题")
     script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js")
+    script(type="text/javascript" language="javascript" src="/javascripts/DataTable/questions.js")
     script.
         $(".list ul li").click(function () {
             var index = $(this).index();
             $(this).addClass('active').siblings().removeClass();
             $(".main content").eq(index).show().siblings().hide();
         });
-
-        $('#textTable').DataTable({
-            "language": {
-                "sProcessing": "处理中...",
-                "sLengthMenu": "每页 _MENU_ 项",
-                "sZeroRecords": "没有匹配结果",
-                "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
-                "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
-                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                "sInfoPostFix": "",
-                "sSearch": "搜索:",
-                "sUrl": "",
-                "sEmptyTable": "表中数据为空",
-                "sLoadingRecords": "载入中...",
-                "sInfoThousands": ",",
-                "oPaginate": {
-                    "sFirst": "首页",
-                    "sPrevious": "上页",
-                    "sNext": "下页",
-                    "sLast": "末页",
-                    "sJump": "跳转"
-                },
-                "oAria": {
-                    "sSortAscending": ": 以升序排列此列",
-                    "sSortDescending": ": 以降序排列此列"
-                }
-            },
-            "ajax": {
-                "url":"/v1_0/javascript/mcq",
-                "dataSrc": ""
-            },
-            "autoWidth": false,
-            "columnDefs": [
-                {"width": "5%", "targets": 0},
-                {"width": "25%", "targets": 1},
-                {"width": "15%", "targets": 2},
-                {"width": "10%", "targets": 3},
-                {"width": "10%", "targets": 4},
-                {"width": "15%", "targets": 5},
-                {"width": "10%", "targets": 6},
-            ],
-            "columns": [
-                {"data": "序号"},
-                {"data": "问题"},
-                {"data": "选择项"},
-                {"data": "展示代码"},
-                {"data": "正确答案"},
-                {"data": "解释"},
-                {"data": "修改时间"}
-            ],
+        $(".q-push").click(function () {
+            $("#push_data").show();
         });
+        $("#push_data").click(function () {
+            $(this).hide();
+        })
+        $(".q-data-wrap").click(function (e) {
+            e.stopPropagation();
+        });
+
+
+
+

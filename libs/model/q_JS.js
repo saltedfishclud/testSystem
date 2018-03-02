@@ -9,8 +9,7 @@ var JS = new Schema({
     options:{type:Array,require:true},
     rightAnswer:{type:String,require:true},
     explain:{type:String,require:true},
-    modified:{ type: Date, default: Date.now },
-    adminUser:{type:String,require:true},
+    modified:{ type: Date, default: Date.now }
 });
 
 module.exports = db.model('JS_question', JS);
