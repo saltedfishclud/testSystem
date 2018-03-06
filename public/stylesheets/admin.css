@@ -127,7 +127,7 @@ td{
 .q-data-wrap div{
 	margin-bottom: 10px;
 }
-input[name="question"],input[name="options"],input[name="rightAnswer"]{
+input[name="question"],input[name="options"],input[name="rightAnswer"],input[name="result"]{
 	width: 70%;
 	line-height: 30px;
 }

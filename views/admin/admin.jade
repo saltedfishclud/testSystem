@@ -26,25 +26,15 @@ html
                     h2 考试题库
                     div.sel
                         select#sel_subj
-                            option(value='basics') 前端基础
-                            option(value='javascript') javascript
-                            option(value='html5') HTML5
+                            option(value='mcq') 选择题
+                            option(value='multiple') 多选题
+                            option(value='judge') 判断
                         button.q-query 查询
-                div.search-answer
+                div.search-answer(style='display:none')
                     div#btn
                         input.q-push.q-btn(type="button" value="添加新试题")
                         input.q-del.q-btn(type="button" value="删除所选试题")
-                    table#textTable.display(style="width:100%" cellspacing="1")
-                        thead
-                            tr
-                                th ID
-                                th 问题
-                                th 选择项
-                                th 展示代码
-                                th 正确答案
-                                th 解释
-                                th 修改时间
-                                th
+                    div#table
             content.performance(style='display:none')
                 div.title
                     h2 成绩查询
@@ -53,29 +43,26 @@ html
         div#push_data
             div.q-data-wrap
                 form(action="/v1_0/javascript/mcq" method="POST")
-                    div
-                        p
-                            label 题目
+                    div.item
+                        p 题目
                         input(type="text" name="question")
-                    div
-                        p
-                            label 试题代码
+                    div.item
+                        p 试题代码
                         textarea(name="q_code")
-                    div
-                        p
-                            label 选项(数组格式)
+                    div.item
+                        p 选项(选项逗号隔开)
                         input(type="text" name="options")
-                    div
-                        p
-                            label 正确答案
+                    div.item
+                        p 正确答案
                         input(type="text" name="rightAnswer")
-                    div
-                        p
-                            label 解释说明
+                    div.item
+                        p 解释说明
                         textarea(name="explain")
                     input(type="submit" class="q-submit" value="提交试题")
     script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js")
-    script(type="text/javascript" language="javascript" src="/javascripts/DataTable/questions.js")
+    script(type="text/javascript" language="javascript" src="/javascripts/DataTable/js_table_init.js")
+    script(type="text/javascript" language="javascript" src="/javascripts/table_builder.js")
+    script(type="text/javascript" language="javascript" src="/javascripts/post_form.js")
     script.
         $(".list ul li").click(function () {
             var index = $(this).index();
@@ -83,6 +70,8 @@ html
             $(".main content").eq(index).show().siblings().hide();
         });
         $(".q-push").click(function () {
+            var type = $("#sel_subj").val();
+            creates_form(document.getElementById("push_data").childNodes[0],type);
             $("#push_data").show();
         });
         $("#push_data").click(function () {
@@ -92,6 +81,11 @@ html
             e.stopPropagation();
         });
 
+        $(".q-query").click(function () {
+            var type = $("#sel_subj").val();
+            $(".search-answer").hide();
+            table_builder(document.getElementById("table"), "javascript", type);
+            $(".search-answer").show();
+            initTable(type);
 
-
-
+        });
