@@ -3,7 +3,9 @@ function table_builder(warp,subj,type) {
         javascript:{
             mcq:["ID","问题","选择项","展示代码","正确答案","解释","修改时间"],
             judge:["ID","问题","展示代码","答案","解释","修改时间"],
-            multiple:["ID","问题","选择项","展示代码","答案","解释","修改时间"]
+            multiple:["ID","问题","选择项","展示代码","答案","解释","修改时间"],
+            code:["ID","问题","展示代码","参考答案","解释","修改时间"],
+            sketch:["ID","问题","展示代码","参考答案","参考代码","修改时间"]
         }
     }
     if(warp.getElementsByTagName("table")[0]){

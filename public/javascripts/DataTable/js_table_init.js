@@ -29,7 +29,9 @@ function initTable(sel) {
     var js = {
         mcq:"/v1_0/javascript/mcq",
         judge:"/v1_0/javascript/judge",
-        multiple:"/v1_0/javascript/multiple"
+        multiple:"/v1_0/javascript/multiple",
+        code:"/v1_0/javascript/code",
+        sketch:"/v1_0/javascript/sketch"
     }
 
     var col = {
@@ -98,7 +100,7 @@ function initTable(sel) {
                 {"width": "10%", "targets": 0},
                 {"width": "20%", "targets": 1},
                 {"width": "20%", "targets": 2},
-                {"width": "20%", "targets": 3},
+                {"width": "20%", "targets": 3,className:"text-center"},
                 {"width": "20%", "targets": 4},
                 {"width": "20%", "targets": 5},
                 {"width": "10%", "targets": 6,
@@ -121,6 +123,62 @@ function initTable(sel) {
                 }
             ]
         },
+        code:{
+            columnDefs:[
+                {"width": "10%", "targets": 0},
+                {"width": "20%", "targets": 1},
+                {"width": "15%", "targets": 2},
+                {"width": "15%", "targets": 3},
+                {"width": "15%", "targets": 4},
+                {"width": "15%", "targets": 5},
+                {"width": "10%", "targets": 6,
+                    render:function (data,type,row,meta) {
+                        return '<input type="checkbox" name="checkList" value="' + row.id + '"  id="checkall"/>'
+                    }
+                }
+            ],
+            columns:[
+                {"data": "_id"},
+                {"data": "question"},
+                {"data": "q_code"},
+                {"data": "qanswer_code"},
+                {"data": "explain"},
+                {"data": "modified"},
+                {
+                    data: null,
+                    title: "<input type='checkbox' name='checklist' id='checkall'/>",
+                    className:"text-center"
+                }
+            ]
+        },
+        sketch:{
+            columnDefs:[
+                {"width": "10%", "targets": 0},
+                {"width": "20%", "targets": 1},
+                {"width": "20%", "targets": 2},
+                {"width": "20%", "targets": 3,className:"text-center"},
+                {"width": "15%", "targets": 4},
+                {"width": "15%", "targets": 5},
+                {"width": "10%", "targets": 6,
+                    render:function (data,type,row,meta) {
+                        return '<input type="checkbox" name="checkList" value="' + row.id + '"  id="checkall"/>'
+                    }
+                }
+            ],
+            columns:[
+                {"data": "_id"},
+                {"data": "question"},
+                {"data": "q_code"},
+                {"data": "qanswer"},
+                {"data": "explain"},
+                {"data": "modified"},
+                {
+                    data: null,
+                    title: "<input type='checkbox' name='checklist' id='checkall'/>",
+                    className:"text-center"
+                }
+            ]
+        }
     }
 
     var table = $('#textTable').DataTable({
@@ -169,7 +227,7 @@ function initTable(sel) {
                 $.ajax({
                     Async:false,
                     type: "delete",
-                    url: '/v1_0/javascript/mcq/' + id
+                    url: '/v1_0/javascript/'+sel+"/" + id
                 });
             });
             table.ajax.reload();

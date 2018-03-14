@@ -1,6 +1,8 @@
 function creates_form(warp,type) {
 
-    warp.removeChild(warp.childNodes[0]);
+    if(warp.childNodes[0]){
+        warp.removeChild(warp.childNodes[0]);
+    }
 
     var form = document.createElement("form");
 
@@ -54,6 +56,38 @@ function creates_form(warp,type) {
         },{
             name:"result",
             show:"结果"
+        },{
+            name:"explain",
+            show:"解释说明",
+            textArea:true
+        }],
+        code:[{
+            name:"question",
+            show:"题目"
+        },{
+            name:"q_code",
+            show:"试题代码",
+            textArea:true
+        },{
+            name:"qanswer_code",
+            show:"结果",
+            textArea:true
+        },{
+            name:"explain",
+            show:"解释说明",
+            textArea:true
+        }],
+        sketch:[{
+            name:"question",
+            show:"题目"
+        },{
+            name:"q_code",
+            show:"试题代码",
+            textArea:true
+        },{
+            name:"qanswer",
+            show:"答案",
+            textArea:true
         },{
             name:"explain",
             show:"解释说明",

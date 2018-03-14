@@ -18,7 +18,6 @@ html
                 password:"123456"
             },function (doc) {
                 var value = "Authorization%20"+doc.access_token;
-                console.log(value);
                 $.ajax({
                     type: "get",//数据发送的方式（post 或者 get）
                     url: "/v1_0/javascript/mcq",//要发送的后台地址

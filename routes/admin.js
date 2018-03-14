@@ -5,7 +5,7 @@ var adminModel = require('../libs/model/admin_group');
 /* GET admin listing. */
 router.get('/view', function(req, res ) {
     var adminUser = req.session.admin;
-    if(req.session.isLogin){
+    if(req.session.isAdminLogin){
         res.render('admin/admin',{adminUser});
     }else{
         res.redirect('/admin/login');
@@ -13,7 +13,7 @@ router.get('/view', function(req, res ) {
 });
 
 router.get('/login',function (req,res) {
-    if(req.session.isLogin){
+    if(req.session.isAdminLogin){
         res.redirect('/admin/view');
     }else{
         res.render('admin/adminlogin');
@@ -37,7 +37,7 @@ router.post('/dologin',function (req,res) {
         doc.comparePassword(password,function (err,isMatch) {
             if (err)throw err;
             if (isMatch){
-                req.session.isLogin = isMatch;
+                req.session.isAdminLogin = isMatch;
                 req.session.admin = doc.admin;
                 res.redirect('/admin/view');
             }else{

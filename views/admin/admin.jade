@@ -29,6 +29,8 @@ html
                             option(value='mcq') 选择题
                             option(value='multiple') 多选题
                             option(value='judge') 判断
+                            option(value='code') 编程题
+                            option(value='sketch') 简答题
                         button.q-query 查询
                 div.search-answer(style='display:none')
                     div#btn
@@ -42,23 +44,6 @@ html
                 div.search-answer
         div#push_data
             div.q-data-wrap
-                form(action="/v1_0/javascript/mcq" method="POST")
-                    div.item
-                        p 题目
-                        input(type="text" name="question")
-                    div.item
-                        p 试题代码
-                        textarea(name="q_code")
-                    div.item
-                        p 选项(选项逗号隔开)
-                        input(type="text" name="options")
-                    div.item
-                        p 正确答案
-                        input(type="text" name="rightAnswer")
-                    div.item
-                        p 解释说明
-                        textarea(name="explain")
-                    input(type="submit" class="q-submit" value="提交试题")
     script(type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js")
     script(type="text/javascript" language="javascript" src="/javascripts/DataTable/js_table_init.js")
     script(type="text/javascript" language="javascript" src="/javascripts/table_builder.js")
@@ -87,5 +72,4 @@ html
             table_builder(document.getElementById("table"), "javascript", type);
             $(".search-answer").show();
             initTable(type);
-
         });

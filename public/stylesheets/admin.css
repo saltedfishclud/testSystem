@@ -136,6 +136,11 @@ textarea[name="q_code"],textarea[name="explain"]{
 	width: 80%;
 	height:240px;
 }
+textarea[name="qanswer"],textarea[name="qanswer_code"]{
+	resize: none;
+	width: 80%;
+	height: 200px;
+}
 input.q-submit{
 	display: block;
 	width: 100px;

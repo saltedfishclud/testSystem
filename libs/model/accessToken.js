@@ -3,20 +3,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // AccessToken
-var AccessToken = new Schema({
-    adminId: {
+var ticket = new Schema({
+    userId: {
         type: String,
         required: true
     },
 
-    clientId: {
+    ticket: {
         type: String,
-        required: true
-    },
-
-    token: {
-        type: String,
-        unique: true,
         required: true
     },
 
@@ -26,4 +20,4 @@ var AccessToken = new Schema({
     }
 });
 
-module.exports  = db.model('AccessToken', AccessToken);
+module.exports  = db.model('ticket', ticket);
